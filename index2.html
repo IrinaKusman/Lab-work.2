@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 2</title>
+</head>
+<body>
+    <h1>Улюблені книги</h1>
+    <div class="books"></div>
+    <script>
+        let objArr = 
+        [
+            {
+                name : "Чарлі і шоколадна фабрика",
+                author : "Рональд Дал",
+                data : 1964
+            },
+            {
+                name : "1984",
+                author : "Джордж Орвелл",
+                data : 1949
+            },
+            {
+                name : "О дивний новий світ",
+                author : "Олдос Хакслі",
+                data : 1932
+            },
+            {
+                name : "Учень відьмака",
+                author : "Джозеф Ділейні",
+                data : 2004
+            },
+            {
+                name : "Гаррі Поттер і філософський камінь",
+                author : "Джоан Роулінг",
+                data : 1997
+            },
+        ];
+
+        let addBooks = () =>
+        {
+            let newOL = document.createElement('ol');
+            objArr.forEach(elem => 
+            {
+                let newLi = document.createElement('li');
+                let pName = document.createElement('p');
+                let pAuthor = document.createElement('p');
+                let pData = document.createElement('p');
+                pName.innerText = elem.name;
+                pAuthor.innerText = elem.author;
+                pData.innerText = elem.data;
+                newLi.appendChild(pName);
+                newLi.appendChild(pAuthor);
+                newLi.appendChild(pData);
+                newOL.appendChild(newLi);
+            });
+            document.querySelector(".books").appendChild(newOL);
+        };
+        addBooks();
+
+        let links = 
+        [
+            "https://www.yakaboo.ua/ua/charlie-and-the-chocolate-factory.html",
+            "https://www.yakaboo.ua/ua/1984-2113635.html",
+            "https://www.yakaboo.ua/ua/o-divnyj-novyj-mir-2103489.html",
+            "https://www.yakaboo.ua/ua/uchen-vid-maka.html",
+            "https://www.yakaboo.ua/ua/harry-potter-and-the-philosophers-stone.html"
+        ];
+        let addLink = () =>
+        {
+            let liArr = document.querySelectorAll(".books ol li");
+            for(let i = 0; i < liArr.length; i++)
+            {
+                let newLink = document.createElement('a');
+                newLink.href = links[i];
+                newLink.innerText = "Переглянути книгу";
+                liArr[i].appendChild(newLink);
+            }
+        };
+        addLink();
+    </script>
+</body>
+</html>

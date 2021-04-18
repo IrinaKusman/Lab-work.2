@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+ <html>
+
+    <head>
+        <meta charset="utf-8"/>
+        <title> Найвищі вершини</title>
+        <style>
+            #mountains 
+            {
+                border: 1px solid black;
+                padding: 3px;
+                margin-bottom: 40px;
+            }
+            #mountains th , #mountains td
+            {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+
+     <body>
+
+        <h2> Найвищі вершини </h2>
+        <table id="mountains">
+            <thead>
+              <tr>
+                <th>Назва</th>
+                <th>Країна</th>
+                <th>Висота</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Говерла</td>
+                <td>Україна, Карпати</td>
+                <td>2061м</td>
+              </tr>
+              <tr>
+                <td>Тайде</td>
+                <td>Іспанія, Санта-Крус-де-Тенерифе</td>
+                <td>3718м</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <div id="addBlock">
+            <input type="text" placeholder="Назва">
+            <input type="text" placeholder="Країна">
+            <input type="text" placeholder="Висота">
+            <button id = "addBtn">Добавити</button>
+          </div>
+          
+        <script>
+            document.body.style.fontFamily = "Arial";
+
+            let addRecord = () =>
+            {
+                let inputArr = document.querySelectorAll("#addBlock input");
+                let newtr = document.createElement("tr");
+                inputArr.forEach(elem => 
+                {
+                    let newTd = document.createElement("td");
+                    newTd.innerText = elem.value;
+                    newtr.appendChild(newTd);
+                });
+                document.querySelector("#mountains tbody").appendChild(newtr);
+            }
+
+            document.getElementById("addBtn").addEventListener("click",addRecord);
+        </script>
+    </body>
+
+ </html>
